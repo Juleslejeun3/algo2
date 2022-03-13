@@ -1,0 +1,47 @@
+ALGORITHM overlapping_element_sum //solution1
+VAR
+    set1 : ARRAY_OF INTEGER[4];
+    set2 : ARRAY_OF INTEGER[4];
+    i : INTEGER;
+    sum : INTEGER;
+BEGIN
+    set1 := {12, 13, 6, 10};
+    Write(set1);
+    set2 := {13, 10, 16, 15};
+    Write(set2);
+    FOR i FROM 0 TO set1.length-1 STEP step  DO
+    sum := 0;
+        IF (set1[i] <> -1 ) THEN
+            set1[i] = TRUE; //overlapping in set1
+        END_IF
+    END_FOR
+    FOR i FROM 0 TO set2.length-1 STEP step  DO
+    sum := 0;
+        IF (set2[i] <> -1 ) THEN
+            set2[i] = TRUE; //overlapping in set2
+        END_IF
+    END_FOR
+    sum := set1[i] + set2[i];
+    Write(sum)
+END
+
+ALGORITHM overlapping_element_sum //solution2
+VAR
+    htab : HASH_TABLE<INTEGER,INTEGER>;
+    set1 : ARRAY_OF INTEGER[4];
+    set2 : ARRAY_OF INTEGER[4];
+    i, count, sum : INTEGER; 
+BEGIN
+    set1 := {12, 13, 6, 10};
+    Write(set1);
+    set2 := {13, 10, 16, 15};
+    Write(set2);
+    htab.insert(set1[i],set2[i]);
+    count := 2;
+    IF (htab(count+1) = 1 ) THEN
+    sum := htab.get(set1[i+1],set2[i+1)
+    ELSE
+        sum := 0;
+    END_IF
+    Write(sum)
+END

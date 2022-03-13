@@ -1,0 +1,41 @@
+ALGORITHM distinct_element_sum //solution 1
+VAR
+    set1 : ARRAY_OF INTEGER[4];;
+    set2 : ARRAY_OF INTEGER[5];
+    i : INTEGER;
+    sum : INTEGER;
+BEGIN
+    set1 := {3,1,7,9};
+    Write(set1);
+    set2 := {2, 4, 1, 9, 3};
+    Write(set2);
+    FOR i FROM 0 TO set1.length-1 STEP step  DO
+    sum := 0;
+        IF (set1[i]<>set2[i]) THEN
+            sum := set1[i]+set2[i]; // add element distinct
+            Write(sum)
+        ELSE
+            Write(set1[i] = set2[i])
+        END_IF
+    END_FOR
+END
+
+ALGORITHM distinct_element_sum //solution 2
+VAR
+    htab : HASH_TABLE<INTEGER,INTEGER>;
+    set1 : ARRAY_OF INTEGER[4];
+    set2 : ARRAY_OF INTEGER[5];
+    i, count, sum : INTEGER; 
+BEGIN
+    set1 := {3,1,7,9};
+    Write(set1);
+    set2 := {2, 4, 1, 9, 3};
+    Write(set2);
+    htab.insert(set1[i],set2[i]);
+    IF (count = 1) THEN
+        sum := htab.get(count+1)
+    ELSE
+        sum := 0;
+    END_IF
+    Write(sum)
+END
